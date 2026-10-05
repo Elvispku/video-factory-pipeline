@@ -5,7 +5,7 @@
 ## 安装（命令行一条）
 
 ```bash
-git clone https://github.com/pensongchs/video-factory-pipeline.git ~/.zcode/skills/video-factory-pipeline
+git clone https://github.com/Elvispku/video-factory-pipeline.git ~/.zcode/skills/video-factory-pipeline
 ```
 
 其他智能体的技能目录：
