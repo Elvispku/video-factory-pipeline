@@ -25,18 +25,18 @@ cp config.example.json config.json
 # 编辑 config.json：projectRoot 指向视频工厂项目根目录，deliverDir 指向成片交付目录
 ```
 
-## 前置条件（本 skill 是"操作手冊"，产线本体必须已就位）
+## 前置条件（重要：本仓库只是操作手册，产线本体在私库）
 
-本 skill 驱动的是本地视频工厂项目，运行机器上需要：
+本 skill 驱动的是**私有仓库 [video-factory](https://github.com/Elvispku/video-factory)**（完整产线：引擎/脚本/合同/数据资产）。首次安装把它一起克隆：
 
-1. **视频工厂项目**（含 `factory.config.json`、`scripts/`、`remotion-engine/`、数据合同三件套），见根目录 `factory.config.json` 结构
-2. Node.js ≥ 20、Python ≥ 3.10、ffmpeg + ffprobe、Git
-3. Python 依赖：`pip install edge-tts faster-whisper rapidocr-onnxruntime pillow`
-4. Remotion 引擎：项目内 `remotion-engine/` 执行 `npm install`
-5. 字幕 skill（可选但推荐）：[generate-timestamped-subtitles](https://github.com/pensongchs/shengcheng-shijianma-zimu-skill)（whisper.cpp + small 模型 ~466MB）
-6. 分镜模板：[storyboard-visual-style-template-3.0](https://github.com/pensongchs/storyboard-visual-style-template-3.0)
+```bash
+git clone https://github.com/Elvispku/video-factory.git   # 私库，需要访问权
+```
 
-装好后跑 `npm run doctor`，全绿即产线就绪。
+- 本机（Elvispku 的 Windows 机器）已存凭据，克隆零配置
+- 其他机器/账号：请仓库所有者添加协作者，或提供访问令牌（Settings → Collaborators）
+
+其余依赖：Node.js ≥ 20、Python ≥ 3.10、ffmpeg、Git；Python 依赖 `pip install -r requirements.txt`（在项目内）；Remotion 引擎 `cd remotion-engine && npm install`；字幕 skill [generate-timestamped-subtitles](https://github.com/pensongchs/shengcheng-shijianma-zimu-skill)；分镜模板 [storyboard-visual-style-template-3.0](https://github.com/pensongchs/storyboard-visual-style-template-3.0)。逐条命令见项目内 `SETUP.md`。装好后 `npm run doctor` 全绿即产线就绪。
 
 ## 用法
 

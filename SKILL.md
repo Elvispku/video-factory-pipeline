@@ -12,9 +12,17 @@ description: 从抖音链接或本地视频产出原创 9:16 抖音成片：来�
 
 ## 首次安装（一次性）
 
-1. `cp config.example.json config.json`，填入本机 `projectRoot`（视频工厂项目根）与 `deliverDir`（成片交付目录）
-2. 产线前置：项目内 `npm run doctor` 全绿（缺 Python 依赖装 `edge-tts faster-whisper rapidocr-onnxruntime pillow`；缺 Remotion 依赖在 `remotion-engine/` 里 `npm install`）
-3. 授权检查：`factory.config.json → services.tts.rights.status` 必须为 `authorized` 才可能到 READY_TO_PUBLISH（未确认时项目只会到 ON_HOLD）
+1. **拉取产线本体**（私库，机器需有 GitHub 访问权——本机已存凭据则直接可用）：
+
+   ```bash
+   git clone https://github.com/Elvispku/video-factory.git "$HOME/video-factory"
+   ```
+
+2. `cd ~/.zcode/skills/video-factory-pipeline && cp config.example.json config.json`，填入本机 `projectRoot`（上一步克隆的 video-factory 目录）与 `deliverDir`
+3. 产线前置：项目内 `npm run doctor`（缺 Python 依赖装 `pip install -r requirements.txt`；缺 Remotion 依赖在 `remotion-engine/` 里 `npm install`）
+4. 授权检查：`factory.config.json → services.tts.rights.status` 必须为 `authorized` 才可能到 READY_TO_PUBLISH（未确认时项目只会到 ON_HOLD）
+
+> 注意：产线本体在私库 `video-factory`，公开的 skill 仓库只有操作手册。无访问权时先请项目所有者添加协作者或提供访问令牌。
 
 ## 耗时基准（实测，用于向用户交代预期）
 
